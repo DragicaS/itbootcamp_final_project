@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.ChecksInputTypesPage;
 import pages.LoginUrlPage;
 
 import java.time.Duration;
@@ -19,6 +20,7 @@ public class BaseTest {
     private WebDriver driver;
     private WebDriverWait wait;
     protected LoginUrlPage loginUrlPage;
+    protected ChecksInputTypesPage checksInputTypesPage;
 
     @BeforeClass
     public void beforeClass()
@@ -27,6 +29,8 @@ public class BaseTest {
         driver=new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         loginUrlPage=new LoginUrlPage(driver,wait);
+        checksInputTypesPage=new ChecksInputTypesPage(driver,wait);
+
 
     }
 
