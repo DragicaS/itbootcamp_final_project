@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.HomePage;
 import pages.LoginPage;
 
 import java.time.Duration;
@@ -21,6 +22,7 @@ public class BaseTest {
     private WebDriverWait wait;
     protected LoginPage loginPage;
     protected Faker faker;
+    protected HomePage homePage;
 
     @BeforeClass
     public void beforeClass() {
@@ -30,6 +32,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         loginPage = new LoginPage(driver, wait);
         faker = new Faker();
+        homePage=new HomePage(driver,wait);
 
 
     }

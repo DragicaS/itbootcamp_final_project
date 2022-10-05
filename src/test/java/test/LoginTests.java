@@ -50,5 +50,39 @@ public class LoginTests extends BaseTest {
         String actualResult2=loginPage.getDriver().getCurrentUrl();
         Assert.assertEquals(actualResult2,expectedResult2);
     }
+    @Test(priority = 4)
+    public void errorPassword()
+    {
+        String expectedResult="Wrong password";
+        loginPage.loginClick();
+        loginPage.invalidInputWithWrongPassword();
+        WebElement result= getDriver().findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li"));
+        String actualResult=result.getText();
+        Assert.assertEquals(actualResult,expectedResult);
+    }
+    @Test(priority = 5)
+    public void login()
+    {
+        loginPage.loginClick();
+        loginPage.login();
+        String actualUrl="https://vue-demo.daniel-avellaneda.com/home";
+        Assert.assertTrue(actualUrl.contains("home"));
+
+    }
+    @Test(priority = 5)
+    public void logout()
+    {
+//        WebElement fined= getDriver().findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/span/button"));
+//        fined.click();
+        Assert.assertTrue(loginPage.getLogoutButton().isDisplayed());
+        String url="https://vue-demo.daniel-avellaneda.com/login";
+        Assert.assertTrue(url.contains("login"));
+        loginPage.logout();
+        String url2="https://vue-demo.daniel-avellaneda.com/home";
+        Assert.assertFalse(url.contains("home"));
+
+
+    }
+
 
 }

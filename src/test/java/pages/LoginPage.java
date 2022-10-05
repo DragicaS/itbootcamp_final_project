@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     private By loginButton = By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]");
     private By email = By.id("email");
     private By password = By.id("password");
+    private By logoutButton=By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/button[2]/span");
     Faker faker = new Faker();
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
@@ -33,10 +34,14 @@ public class LoginPage extends BasePage {
     public WebElement getPassword() {
         return getDriver().findElement(password);
     }
-
+    public WebElement getLogoutButton()
+    {
+        return getDriver().findElement(logoutButton);
+    }
     public void loginClick() {
         getLoginButton().click();
     }
+
 
     public void invalidInput() {
         getEmail().clear();
@@ -52,6 +57,27 @@ public class LoginPage extends BasePage {
     {
         getEmail().clear();
         getPassword().clear();
-
+        WebElement searchField = getDriver().findElement(email);
+        searchField.sendKeys("admin@admin.com");
+        WebElement searchFieldPassword = getDriver().findElement(password);
+        searchFieldPassword.sendKeys(faker.internet().password());
+        WebElement searchFieldLogin = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span"));
+        searchFieldLogin.click();
+    }
+    public void login()
+    {
+        getEmail().clear();
+        getPassword().clear();
+        WebElement searchField = getDriver().findElement(email);
+        searchField.sendKeys("admin@admin.com");
+        WebElement searchFieldPassword = getDriver().findElement(password);
+        searchFieldPassword.sendKeys("12345");
+        WebElement searchFieldLogin = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span"));
+        searchFieldLogin.click();
+    }
+    public void logout()
+    {
+        WebElement searchField=getDriver().findElement(logoutButton);
+        searchField.click();
     }
 }
