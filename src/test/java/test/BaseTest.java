@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SignupPage;
 
 import java.time.Duration;
 
@@ -18,21 +19,23 @@ import java.time.Duration;
 •	beforeMethod - gde se pre svakog testa ucitava baseUrl stranica
 */
 public class BaseTest {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
     protected LoginPage loginPage;
     protected Faker faker;
     protected HomePage homePage;
-
+    protected SignupPage signupPage;
     @BeforeClass
     public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "D:\\Bootcamp\\chromedriver.exe");
         driver = new ChromeDriver();
+        wait=new WebDriverWait(driver,Duration.ofSeconds(15));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
         faker = new Faker();
         homePage=new HomePage(driver,wait);
+        signupPage=new SignupPage(driver,wait);
 
 
     }
