@@ -83,7 +83,8 @@ public class LoginTests extends BaseTest {
 //        fined.click();
         /*•	Verifikovati da se u url-u stranice javlja /login ruta
 •	Verifikovati da se nakon pokušaja otvaranja /home rute, u url-u stranice javlja /login ruta
-*/
+*/      homePage.clickLogin();
+        loginPage.login();
         Assert.assertTrue(loginPage.getLogoutButton().isDisplayed());
         String expectedResult="https://vue-demo.daniel-avellaneda.com/login";
         loginPage.getLogoutButton().click();

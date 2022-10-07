@@ -78,8 +78,8 @@ assert:
         getEmail().clear();
         getPassword().clear();
         getConfirmPassword().clear();
-        getName().sendKeys("Dragica Smi");
-        getEmail().sendKeys("dragica.smi@itbootcamp.com");
+        getName().sendKeys("Dragica Smilj");
+        getEmail().sendKeys("dragica.smilj@itbootcamp.com");
         getPassword().sendKeys("123456");
         getConfirmPassword().sendKeys("123456");
 
