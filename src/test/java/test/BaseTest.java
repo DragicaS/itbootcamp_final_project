@@ -11,11 +11,7 @@ import pages.*;
 
 import java.time.Duration;
 
-/*•	baseUrl - url stranice https://vue-demo.daniel-avellaneda.com
-•	beforeClass - gde se podesava drajver sa implicitnim cekanjem i cekanjem za ucitavanje stranice i kreiraju svi pagevi potrebni za testiranje
-•	aftterClass - gde se gasi stranica
-•	beforeMethod - gde se pre svakog testa ucitava baseUrl stranica
-*/
+
 public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -26,20 +22,24 @@ public class BaseTest {
     protected AdminCitiesPage adminCitiesPage;
     protected AuthRoutesPage authRoutesPage;
     protected LocalePage localePage;
+    protected ProfilePage profilePage;
+
     @BeforeClass
     public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "D:\\Bootcamp\\chromedriver.exe");
         driver = new ChromeDriver();
-        wait=new WebDriverWait(driver,Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        loginPage = new LoginPage(driver, wait);
-        faker = new Faker();
-        homePage=new HomePage(driver,wait);
-        signupPage=new SignupPage(driver,wait);
-        adminCitiesPage=new AdminCitiesPage(driver,wait);
-        authRoutesPage=new AuthRoutesPage(driver,wait);
-        localePage=new LocalePage(driver,wait);
+        loginPage = new LoginPage(driver, wait,faker);
+
+        homePage = new HomePage(driver, wait,faker);
+        signupPage = new SignupPage(driver, wait,faker);
+        adminCitiesPage = new AdminCitiesPage(driver, wait,faker);
+        authRoutesPage = new AuthRoutesPage(driver, wait,faker);
+        localePage = new LocalePage(driver, wait,faker);
+        profilePage = new ProfilePage(driver, wait,faker);
+
 
     }
 

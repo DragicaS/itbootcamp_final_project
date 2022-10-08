@@ -1,5 +1,6 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +13,8 @@ public class SignupPage extends BasePage{
     private By password=By.id("password");
     private By confirmPassword=By.id("confirmPassword");
 
-    public SignupPage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+    public SignupPage(WebDriver driver, WebDriverWait wait, Faker faker) {
+        super(driver, wait, faker);
     }
 
     public WebElement getSignupButton() {
@@ -63,14 +64,6 @@ assert:
         result.click();
     }
 
-    /*Podaci:
-•	name: Ime i prezime polaznika
-•	email template: ime.prezime@itbootcamp.rs
-•	password: 12346
-•	confirm password: 123456
-assert:
-•	Verifikovati da dijalog za obavestenje sadrzi tekst IMPORTANT: Verify your account
-*/
 
     public void signup()
     {
@@ -78,8 +71,8 @@ assert:
         getEmail().clear();
         getPassword().clear();
         getConfirmPassword().clear();
-        getName().sendKeys("Dragica Smilj");
-        getEmail().sendKeys("dragica.smilj@itbootcamp.com");
+        getName().sendKeys("Dragica Smiljan");
+        getEmail().sendKeys("dragica.smiljan@itbootcamp.com");
         getPassword().sendKeys("123456");
         getConfirmPassword().sendKeys("123456");
 
@@ -89,5 +82,4 @@ assert:
         WebElement result= getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button/span"));
         result.click();
     }
-    //"//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button/span"
 }

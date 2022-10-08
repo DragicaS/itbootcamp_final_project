@@ -12,11 +12,11 @@ public class LoginPage extends BasePage {
     private By loginButton = By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span");
     private By email = By.id("email");
     private By password = By.id("password");
-    private By logoutButton=By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/button[2]/span");
-    Faker faker = new Faker();
+    private By logoutButton = By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/button[2]/span");
 
-    public LoginPage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+
+    public LoginPage(WebDriver driver, WebDriverWait wait, Faker faker) {
+        super(driver, wait, faker);
     }
 
     public WebElement getMenu() {
@@ -34,10 +34,11 @@ public class LoginPage extends BasePage {
     public WebElement getPassword() {
         return getDriver().findElement(password);
     }
-    public WebElement getLogoutButton()
-    {
+
+    public WebElement getLogoutButton() {
         return getDriver().findElement(logoutButton);
     }
+
     public void loginClick() {
         getLoginButton().click();
     }
@@ -50,14 +51,10 @@ public class LoginPage extends BasePage {
         searchField.sendKeys(faker.internet().emailAddress());
         WebElement searchFieldPassword = getDriver().findElement(password);
         searchFieldPassword.sendKeys(faker.internet().password());
-
-
-//        WebElement searchFieldLogin = getDriver().findElement(By.xpath("///*[@id=\"app\"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span"));
-//        searchFieldLogin.click();
         loginClick();
     }
-    public void invalidInputWithWrongPassword()
-    {
+
+    public void invalidInputWithWrongPassword() {
         getEmail().clear();
         getPassword().clear();
         WebElement searchField = getDriver().findElement(email);
@@ -65,11 +62,11 @@ public class LoginPage extends BasePage {
         WebElement searchFieldPassword = getDriver().findElement(password);
         searchFieldPassword.sendKeys(faker.internet().password());
         loginClick();
-//        WebElement searchFieldLogin = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span"));
-//        searchFieldLogin.click();
+
     }
-    public void login()
-    {
+        //Nisam prosledjivala parametar gde bi u testu uneli sam email i password jer bih tako dodatno morala da unosim svaki put
+    //kada pozivam metodu login.
+    public void login() {
         getEmail().clear();
         getPassword().clear();
         WebElement searchField = getDriver().findElement(email);
@@ -79,9 +76,9 @@ public class LoginPage extends BasePage {
         WebElement searchFieldLogin = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button/span"));
         searchFieldLogin.click();
     }
-    public void logout()
-    {
-        WebElement searchField=getDriver().findElement(logoutButton);
+
+    public void logout() {
+        WebElement searchField = getDriver().findElement(logoutButton);
         searchField.click();
     }
 }

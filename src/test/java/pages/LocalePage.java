@@ -1,23 +1,20 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LocalePage extends BasePage{
-    /*Test #1: Set locale to ES
-assert:
-•	Postaviti jezik na ES
-•	Verifikovati da se na stranici u hederu javlja tekst Página de aterrizaje
-*/
-    private By languageBtn= By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/button/span");
-    private By languageEn=By.id("list-item-73");
-    private By languageEs=By.id("list-item-75");
-    private By languageFr=By.xpath("//*[@id=\"list-item-77\"]/div");
+public class LocalePage extends BasePage {
 
-    public LocalePage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+    private By languageBtn = By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/button/span");
+    private By languageEn = By.id("list-item-73");
+    private By languageEs = By.id("list-item-75");
+    private By languageFr = By.xpath("//*[@id=\"list-item-77\"]/div");
+
+    public LocalePage(WebDriver driver, WebDriverWait wait, Faker faker) {
+        super(driver, wait, faker);
     }
 
     public WebElement getLanguageBtn() {
@@ -36,20 +33,19 @@ assert:
         return getDriver().findElement(languageFr);
     }
 
-    public void clickLanguageBtn()
-    {
+    public void clickLanguageBtn() {
         getLanguageBtn().click();
     }
-    public void clickLanguageEn()
-    {
+
+    public void clickLanguageEn() {
         getLanguageEn().click();
     }
-    public void clickLanguageEs()
-    {
+
+    public void clickLanguageEs() {
         getLanguageEs().click();
     }
-    public void clickLanguageFr()
-    {
+
+    public void clickLanguageFr() {
         getLanguageFr().click();
     }
 }
