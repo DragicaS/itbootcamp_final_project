@@ -7,10 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.AdminCitiesPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SignupPage;
+import pages.*;
 
 import java.time.Duration;
 
@@ -27,6 +24,7 @@ public class BaseTest {
     protected HomePage homePage;
     protected SignupPage signupPage;
     protected AdminCitiesPage adminCitiesPage;
+    protected AuthRoutesPage authRoutesPage;
     @BeforeClass
     public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "D:\\Bootcamp\\chromedriver.exe");
@@ -39,7 +37,7 @@ public class BaseTest {
         homePage=new HomePage(driver,wait);
         signupPage=new SignupPage(driver,wait);
         adminCitiesPage=new AdminCitiesPage(driver,wait);
-
+        authRoutesPage=new AuthRoutesPage(driver,wait);
 
     }
 
