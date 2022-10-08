@@ -26,6 +26,7 @@ public class BaseTest {
     protected AdminCitiesPage adminCitiesPage;
     protected AuthRoutesPage authRoutesPage;
     protected LocalePage localePage;
+    protected ProfilePage profilePage;
     @BeforeClass
     public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "D:\\Bootcamp\\chromedriver.exe");
@@ -40,6 +41,8 @@ public class BaseTest {
         adminCitiesPage=new AdminCitiesPage(driver,wait);
         authRoutesPage=new AuthRoutesPage(driver,wait);
         localePage=new LocalePage(driver,wait);
+        profilePage=new ProfilePage(driver,wait);
+
 
     }
 
