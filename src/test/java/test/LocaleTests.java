@@ -10,6 +10,7 @@ public class LocaleTests extends BaseTest {
     @Test
     public void localeES() {
 
+
         localePage.clickLanguageBtn();
         localePage.clickLanguageEs();
         String actualResult = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[1]/h1")).getText();
